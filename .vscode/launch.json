@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:aoc2025-swift}",
+      "name": "Debug aoc2025-swift",
+      "target": "aoc2025-swift",
+      "configuration": "debug",
+      "preLaunchTask": "swift: Build Debug aoc2025-swift"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:aoc2025-swift}",
+      "name": "Release aoc2025-swift",
+      "target": "aoc2025-swift",
+      "configuration": "release",
+      "preLaunchTask": "swift: Build Release aoc2025-swift"
+    }
+  ]
+}
