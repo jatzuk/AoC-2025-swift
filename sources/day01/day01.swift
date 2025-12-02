@@ -1,6 +1,6 @@
 import Foundation
 
-func part1(input: [String]) -> Int {
+func day01Part1(input: [String]) -> Int {
   var dial = 50
   var result = 0
 
@@ -28,7 +28,7 @@ func part1(input: [String]) -> Int {
   return result
 }
 
-func part2(input: [String]) -> Int {
+func day01Part2(input: [String]) -> Int {
   var dial = 50
   var result = 0
 

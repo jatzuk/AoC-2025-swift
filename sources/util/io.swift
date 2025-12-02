@@ -1,6 +1,6 @@
 import Foundation
 
-public func readInput(path: String) -> [String] {
+public func readInputAsLines(path: String) -> [String] {
   let url =
     if #available(macOS 13.0, *) {
       URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appending(path: path)
@@ -17,7 +17,7 @@ public func readInput(path: String) -> [String] {
     if #available(macOS 13.0, *) {
       print("Error reading file at \(url.path()): \(error.localizedDescription)")
     } else {
-      print("Error reading file \(url.path) \(error.localizedDescription)")
+      print("Error reading file at \(url.path): \(error.localizedDescription)")
     }
     return []
   }
