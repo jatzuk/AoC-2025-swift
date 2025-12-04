@@ -45,5 +45,5 @@ import Testing
 @Test func day04Part2Test() async throws {
   let input = readInputAsLines(path: "sources/day04/input")
   let result = day04Part2(input: input)
-  print(result)
+  #expect(result == 8727)
 }
