@@ -1,6 +1,6 @@
 import Foundation
 
-public func readInputAsLines(path: String) -> [String] {
+public func readInputAsLines(path: String, trimLines: Bool = true) -> [String] {
   let url =
     if #available(macOS 13.0, *) {
       URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appending(path: path)
@@ -11,8 +11,11 @@ public func readInputAsLines(path: String) -> [String] {
   do {
     let content = try String(contentsOf: url, encoding: .utf8)
     let lines = content.components(separatedBy: .newlines)
-      .filter { !$0.isEmpty }
-    return lines
+    return if trimLines {
+      lines.filter { !$0.isBlank }
+    } else {
+      lines
+    }
   } catch {
     if #available(macOS 13.0, *) {
       print("Error reading file at \(url.path()): \(error.localizedDescription)")
