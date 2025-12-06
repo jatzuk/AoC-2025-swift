@@ -27,27 +27,30 @@ private func isWithinRange(n: Int, ranges: [ClosedRange<Int>]) -> Bool {
   }
 }
 
-func day05Part2(input: [String]) -> Int {
+func day05Part2(input: [String]) throws -> Int {
   let split = input.split(whereSeparator: \.isBlank)
-  var minRange = Int.max
-  var maxRange = Int.min
   let fresh = split[0].map { range in
     let values = range.split(separator: "-")
     let left = Int(values[0])!
     let right = Int(values[1])!
-    minRange = min(minRange, left)
-    maxRange = max(maxRange, right)
     return left...right
   }
 
-  var seen = Set<Int>()
-  var counter = 0
+  let sortedRanges = fresh.sorted { $0.lowerBound < $1.lowerBound }
 
-  for n in minRange...maxRange {
-    // if r {
-    //   counter += 1
-    // }
-   }
+  var merged = [ClosedRange<Int>]()
+  merged.append(sortedRanges.first!)
 
-  return counter
+  for range in sortedRanges.dropFirst() {
+    let last = merged.last!
+    if range.lowerBound <= last.upperBound {
+      merged[merged.count - 1] = last.lowerBound...max(last.upperBound, range.upperBound)
+    } else {
+      merged.append(range)
+    }
+  }
+
+  return merged.reduce(0) { acc, range in
+    acc + range.count
+  }
 }

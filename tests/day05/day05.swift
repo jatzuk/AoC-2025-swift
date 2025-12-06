@@ -32,21 +32,13 @@ import Testing
     "10-14",
     "16-20",
     "12-18",
-    "",
-    "1",
-    "5",
-    "8",
-    "11",
-    "17",
-    "32",
   ]
-  let result = day05Part2(input: input)
+  let result = try day05Part2(input: input)
   #expect(result == 14)
 }
 
 @Test func day05Part2Test() async throws {
   let input = readInputAsLines(path: "sources/day05/input", trimLines: false)
-  let result = day05Part2(input: input)
-  print(result)
-  // #expect(result == 8727)
+  let result = try day05Part2(input: input)
+  #expect(result == 347338785050515)
 }
